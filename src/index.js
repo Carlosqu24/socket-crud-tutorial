@@ -1,17 +1,19 @@
 import express from 'express'
 const app = express();
 import path from 'path';
+import { PORT } from './config.js';
+
+import { connectDB } from './db.js';
 
 import { Server as WebsocketServer } from 'socket.io';
 import http from 'http';
 
+connectDB();
 
-app.set('port', process.env.PORT || 3500);
-
-app.use(express.static(path.join(__dirname + 'public')));
+app.use(express.static(path.join(__dirname + '/public')));
 
 const server = http.createServer(app);
-const httpServer = server.listen(app.get('port'));
+const httpServer = server.listen(PORT);
 const io = new WebsocketServer(httpServer);
 
-console.log('http://localhost:' + app.get('port'));
+console.log('http://localhost:' + PORT);
