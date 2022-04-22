@@ -1,4 +1,4 @@
-import Note from "./models/Note";
+import Note from "./models/Note.js";
 
 export default (io) => {
       io.on('connection', (socket) => {
@@ -6,7 +6,7 @@ export default (io) => {
 
             const emitNotes = async () => {
                   const notes = await Note.find();
-                  socket.emit("server:loadnotes", notes)
+                  socket.emit("server:loadnotes", notes);
             };
             emitNotes();
 
