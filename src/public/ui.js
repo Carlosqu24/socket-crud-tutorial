@@ -23,7 +23,7 @@ const deleteNoteUI = () => {
 
       $deleteNoteButtons.forEach(button => {
             button.addEventListener('click', e => {
-                  deleteNote(button.dataset.noteid)
+                  deleteNote(button.dataset.noteid);
             });
       });
 };
