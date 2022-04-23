@@ -7,6 +7,12 @@ const noteSchema = new Schema({
       },
       description: {
             type: String
+      },
+      start_date: {
+            type: Number
+      },
+      end_date: {
+            type: Number
       }
 }, {
       timestamps: true

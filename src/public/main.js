@@ -12,7 +12,9 @@ $form.addEventListener('submit', e => {
      
       saveNote({ 
             title: title.value, 
-            description: description.value
+            description: description.value,
+            start_date: new Date().getTime(),
+            end_date: new Date("2023-02-13").getTime()
       });
 });
 
