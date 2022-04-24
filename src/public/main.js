@@ -1,8 +1,9 @@
-import { loadNotes, saveNote } from "./sockets.js";
+import { deleteNote, loadNotes, saveNote } from "./sockets.js";
 
 const $form = document.querySelector("#form");
 const $notesGrid = document.querySelector("#notes-grid")
-const $deleteNoteButtons = document.querySelectorAll("#data--note-id")
+
+
 
 $form.addEventListener('submit', e => {
       e.preventDefault();
@@ -17,4 +18,9 @@ $form.addEventListener('submit', e => {
 
 document.addEventListener('DOMContentLoaded', e => {
       loadNotes()
+
+      // const $deleteNoteButtons = document.querySelectorAll("[data-noteid]")
+      // const $deleteNoteButtons = document.querySelectorAll(".delete-button")
+     
 })
+

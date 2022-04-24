@@ -1,29 +1,18 @@
-const socket = io.connect();
+import { cleanFormUI, renderNotesUI } from "./ui.js";
 
-const $notesGrid = document.querySelector("#notes-grid")
+const socket = io.connect();
 
 export const saveNote = (note) => {
       socket.emit('client:newnote', note);
+      cleanFormUI()
 };
 
 export const loadNotes = () => {
       socket.on('server:loadnotes', data => {
-            console.log(data)
+            console.log(data);
 
-            let html = "";
-
-            data.forEach(note => {
-                  html += `
-                        <div class="card">
-                              <h2>${note.title}</h2>
-                              <p>${note.description}</p>
-                              <button data--note-id="${note._id}">Delete</button>
-                        </div>
-                  `
-            });
-
-            $notesGrid.innerHTML = html
-      })
+            renderNotesUI(data);
+      });
 };
 
 export const deleteNote = (noteId) => {
